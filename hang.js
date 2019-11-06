@@ -4,6 +4,7 @@ var words = [
     "people",
     "apple",
     "deck",
+    "butter",
     "witness"
 ];
 // выбор случайного слова из массива
@@ -14,8 +15,9 @@ for (var i = 0; i < words.length; i++){
     answerArray[i] = "_";
     }
 var remainingLetters = randomWord.length;
+var guesses = 20;
 //игровой цикл
-while (remainingLetters > 0) {
+while (remainingLetters > 0 && guesses > 0) {
     //показываем состояние игры
     alert(answerArray.join(" "));
     //записываем вариант ответа
@@ -27,8 +29,9 @@ while (remainingLetters > 0) {
         alert("Пожалуйста,введите одну букву.");
     } else {
         //обновляем состояние игры
+        guess = guess.toLowerCase();
         for (var j = 0; j < randomWord.length; j++) {
-            if (randomWord[j] === guess) {
+            if (randomWord[j] === guess && answerArray[j] === "_") {
                 answerArray[j] = guess;
                 remainingLetters--;
             }
